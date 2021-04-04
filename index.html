@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    
+    <header>
+        
+       <brand></brand>
+        <nav>
+            <input id="search-input" type="search" placeholder="Search recipes">
+            <button id="search-button">search</button>
+            <button type="button" id="filter-button">filter</button>
+            <search-bar><search-bar>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div id="filter">
+            <h4>Cuisine</h4>
+            <div class="cuisine filter-list">
+                <div class="cuisine filter-item">
+                    <input type="checkbox" name="cuisine" label="chinese" value="chinese">
+                    <label for="chinese">chinese</label>
+                </div>
+
+                <div class="cuisine filter-item">
+                    <input type="checkbox" name="cuisine" label="french" value="french">
+                    <label for="french">french</label>
+                </div>
+
+                <div class="cuisine filter-item">
+                    <input type="checkbox" name="cuisine" label="european" value="european">
+                    <label for="european">european</label>
+                </div>
+
+                <div class="cuisine filter-item">
+                    <input type="checkbox" name="cuisine" label="italian" value="italian">
+                    <label for="italian">italian</label>
+                </div>
+
+                <div class="cuisine filter-item">
+                    <input type="checkbox" name="cuisine" label="japanese" value="japanese">
+                    <label for="japanese">japanese</label>
+                </div>
+
+                <div class="cuisine filter-item">
+                    <input type="checkbox"  name="cuisine" label="korean" value="koreab">
+                    <label for="korean">korean</label>
+                </div>
+
+                <div class="cuisine filter-item">
+                    <input type="checkbox" name="cuisine" label="median" value="median">
+                     <label for="median">median</label>
+                </div>
+
+
+            </div>
+            <h4> Diets</h4>
+            <div class="diet filter-list">
+             
+                <div class="diet-item">
+                    <input type="radio" name="diets" value="gluton-free">
+                    <label for="gluton-free">Gluton free</label>
+                </div>
+                <div class="diet-item">
+                    <input type="radio" name="diets" value="ketogenic">
+                    <label for="ketogenic">Ketogenic</label>
+                </div>
+
+                <div class="diet-item">
+                    <input type="radio" name="diets" value="vegetarian">
+                    <label for="vegetarian">Vegetarian</label>
+                </div>
+
+                <div class="diet-item">
+                <input type="radio" name="diets" value="vegan">
+                <label for="vegetarian">Vegan</label>
+                </div>
+
+            </div>
+            <h4>INTOLERANCES</h4>
+            <div class="intolerance filter-list">
+                
+                <div class="intolerace item">
+                    <input type="checkbox" name="dairy" value="dairy">
+                    <label for="dairy"> Dairy</label>
+                </div>
+                    
+                <div class="intolerace item">
+                    <input type="checkbox" name="dairy" value="egg">
+                    <label for="egg"> Egg </label>
+                </div>
+
+                <div class="intolerace item">
+                    <input type="checkbox" name="dairy" value="gluton">
+                    <label for="gluton"> Gluton</label>
+                </div>
+
+                <div class="intolerace item">
+                    <input type="checkbox" name="dairy" value="peanut">
+                    <label for="peanut"> Peanut</label>
+                </div>
+
+                <div class="intolerace item">
+                    <input type="checkbox" name="dairy" value="seafood">
+                    <label for="seafood"> Seafood</label>
+                </div>
+
+                
+                
+            </div>
+        </div>
+
+        <div class ="results">
+            
+        </div>
+    </main>
+<script src="main.js" ></script>
+</body>
+</html>
