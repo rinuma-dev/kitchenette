@@ -76,7 +76,7 @@ console.log(filterQuery);
 
 
 
-query = `query=${inputSearch}&cuisine=${selectedCuisine}& `;
+query = `query=${inputSearch}&cuisine=${selectedCuisine}&diet=.${selectedDiets}&intolerances=${selectedDairy} `;
 console.log(query);
 
 }
