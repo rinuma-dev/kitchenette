@@ -1,101 +1,79 @@
 
+const getRecipes =()=>{
+
+};
+
+ 
+const renderAllRecipes = (recipes) => {
+  const listRecipes = document.querySelector(".results");
+  listRecipes.innerHTML = " ";
+
+  recipes.forEach(recipe=>{
+    listRecipes.innerHTML += `
+    <div>
+    ${recipe}
+    </div>
+    `
+
+  });
+}
+
+const showResponseMessage =(message= "Check your connection")=>{
+  alert(message);
+}
+
+
+document.addEventListener("DOMContentLoaded",() => {
 const buttonFilter =  document.querySelector('#filter-button');
 const filterSide = document.getElementById("filter");
 const cuisineCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=cuisine]')
-const dairyCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=dairy]')
+const intoleranceCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=dairy]')
 const dietCheckBoxes = document.querySelectorAll('input[type="radio"][name=diets]')
+const filterChecked ={};
+let listChecked=[];
 
 
-let selectedCuisine = [];
-let selectedDairy = [];
-let selectedDiets = [];
-
-
-
-function getFilterValues(elements){
-  listChecked = []
-  elements.forEach(function(element){
-    element.addEventListener('change', function(){
-      listChecked = 
-      Array.from(elements) // Convert checkboxes to an array to use filter and map.
-      .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
-      .map(i => i.value) // Use Array.map to extract only the checkbox values from the array of objects.
-    
-      console.log(listChecked)
-      return listChecked.toString()
-    })
-  })
+const checkedBoxestoArray =(elements)=>{
+  return Array.from(elements).filter(i => i.checked).map(i => i.value);
 }
 
 
-
-function showFilterSearch(element){
-  if (filterSide.style.display === "none") {
-    return  filterSide.style.display = "block";} 
-  else {
-    return  filterSide.style.display = "none";}
-}
-
-if(buttonFilter){
-  buttonFilter.addEventListener("click", showFilterSearch);
-}
+buttonFilter.addEventListener("click", function(){
+  if (filterSide.style.display === "none") { return  filterSide.style.display = "block";} 
+  else { return  filterSide.style.display = "none";}
+});
 
 
-const searchButton = document.getElementById('search-button');
-searchButton.addEventListener('click', getSearchbarInput);
-const inputSearch =  document.getElementById('search-input').value;
+cuisineCheckBoxes.forEach(function(checkBox){
+  checkBox.addEventListener('change', function(){
+    listChecked = checkedBoxestoArray(cuisineCheckBoxes);
+    filterChecked.cuisine= listChecked.toString();
+    console.log(filterChecked);
+  });
 
-//addevent to listen all the checklist / or radio button on fillter
+});
 
-function isDefined(queryFilter, element){
-  if (element[1]){
-    queryFilter.append(element);
-    return queryFilter
-  }
 
-}
+intoleranceCheckBoxes.forEach(function(checkBox){
+  checkBox.addEventListener('change', function(){
+    listChecked = checkedBoxestoArray(intoleranceCheckBoxes);
+    filterChecked.intolerances= listChecked.toString();
+    console.log(filterChecked);
+  });
 
-function getSearchbarInput(){
-filledFilter =[];
-selectedCuisine = getFilterValues(cuisineCheckBoxes);
-selectedDairy = getFilterValues(dairyCheckBoxes);
-selectedDiets = getFilterValues(dietCheckBoxes);
-const inputSearch = document.getElementById('search-input').value.toString();
-filterQuery={
-  'cuisine' : selectedCuisine,
-  'dairy': selectedDairy,
-  'diet' : selectedDiets,
-  'query': inputSearch
-};
+});
 
-filterQuery = filterQuery.filter(element=> element !== 'undefined');
+dietCheckBoxes.forEach(function(checkBox){
+  checkBox.addEventListener('change', function(){
+    listChecked = checkedBoxestoArray(dietCheckBoxes);
+   filterChecked.diet= listChecked.toString();
+   console.log(filterChecked);
+  });
 
-console.log(filterQuery);
+});
 
 
 
 
 
-query = `query=${inputSearch}&cuisine=${selectedCuisine}&diet=.${selectedDiets}&intolerances=${selectedDairy} `;
-console.log(query);
-
-}
-
-
-
-
-
-
-
-//Handle data for the query
-
-
-
- 
-
-
-
-
-
-
-
+});
