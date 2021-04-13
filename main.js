@@ -31,9 +31,10 @@ const intoleranceCheckBoxes = document.querySelectorAll('input[type="checkbox"][
 const dietCheckBoxes = document.querySelectorAll('input[type="radio"][name=diets]')
 const filterChecked ={};
 let listChecked=[];
+let queries ="";
 
 
-const checkedBoxestoArray =(elements)=>{
+const checkedBoxestoArray = (elements)=>{
   return Array.from(elements).filter(i => i.checked).map(i => i.value);
 }
 
@@ -46,9 +47,9 @@ buttonFilter.addEventListener("click", function(){
 
 cuisineCheckBoxes.forEach(function(checkBox){
   checkBox.addEventListener('change', function(){
-    listChecked = checkedBoxestoArray(cuisineCheckBoxes);
-    filterChecked.cuisine= listChecked.toString();
-    console.log(filterChecked);
+    filterChecked.cuisine = checkedBoxestoArray(cuisineCheckBoxes).toString();
+    constructQuery(filterChecked);
+  
   });
 
 });
@@ -56,21 +57,36 @@ cuisineCheckBoxes.forEach(function(checkBox){
 
 intoleranceCheckBoxes.forEach(function(checkBox){
   checkBox.addEventListener('change', function(){
-    listChecked = checkedBoxestoArray(intoleranceCheckBoxes);
-    filterChecked.intolerances= listChecked.toString();
-    console.log(filterChecked);
+    filterChecked.intolerances = checkedBoxestoArray(intoleranceCheckBoxes).toString();
+    constructQuery(filterChecked);
+   
   });
 
 });
 
 dietCheckBoxes.forEach(function(checkBox){
   checkBox.addEventListener('change', function(){
-    listChecked = checkedBoxestoArray(dietCheckBoxes);
-   filterChecked.diet= listChecked.toString();
-   console.log(filterChecked);
+  filterChecked.diet = checkedBoxestoArray(dietCheckBoxes).toString();
+  queries = constructQuery(filterChecked);
+  
   });
-
 });
+
+
+  const constructQuery = (filterObject)=>{
+    let query = "";
+    Object.keys(filterObject).forEach((property)=>{
+      if(filterObject[property] !== ""){
+      query = query.concat(`?${property}=${filterObject[property]}`)}
+    });
+    return query
+  }
+  
+
+
+
+
+
 
 
 
