@@ -19,15 +19,43 @@ header {
 
 
 .results{
-    background-color: aqua;
-    width: 80%;  
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;  
+    border: 1px solid black;
+    justify-content: space-evenly;
+
+}
+.result{
+    
+    width: 200px;
+    border: 1px solid black;
 }
 
+.recipe-title{
+   
+    text-align: center;
+    border: 1px solid black;
+
+}
+.recipe-img{
+    width: 80%;
+}
+.result img{
+    width: 200px;
+}
 #filter{
-    display: none;
+  
     background-color:yellow;
-    width: 30%;
-    min-width: 200px;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
  
 }
 .filter-list {

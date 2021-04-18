@@ -1,41 +1,46 @@
 const APIkey = '4c0a0fe804be477191cfc6e99d889f28';
 const BaseUrl = "https://api.spoonacular.com/recipes/complexSearch";
 
-const getRecipes = (queries) =>{
-  fetch(`${BaseUrl}${queries}&apiKey=${APIkey}`)
+const getRecipes = (queries) => {
+  console.log(`${BaseUrl}?${queries}&apiKey=${APIkey}`);
+  fetch(`${BaseUrl}?${queries}&apiKey=${APIkey}`)
   
-  .then(response => { 
-    return response.json();
-  })
-  .then(responseJson => {
-    
-    if (responseJson.totalResults == 0) {
-      showResponseMessage(responseJson.message);
-    } else {
-      renderAllRecipes(responseJson.results);
-    }
-  })
-  .catch(error=>{
-    showResponseMessage(error);
-  })
-}
 
+    .then(response => {
+      return response.json();
+    })
+    .then(responseJson => {
+      if (responseJson.totalResults == 0) {
+        showResponseMessage(responseJson.message);
+      } else {
+        renderAllRecipes(responseJson.results);
+      }
+    })
+    .catch(error => {
+      showResponseMessage(error);
+    })
+}
 
 
 const renderAllRecipes = (results) => {
   const listRecipes = document.querySelector(".results");
   listRecipes.innerHTML = " ";
+  
 
   results.forEach(result => {
+    
     listRecipes.innerHTML += `
-    <div>
-    ${result.id}
-    ${result.title}
-    <img src="${result.img}"><img>
-
-
+    <div class= "result">
+   
+    <div class ="recipe-title">
+    <h4>${result.title}</h4>
+    </div>
+    <div class="recipe-img">
+    <img id="img_ ${result.id}" src="${result.image}"><img>
+    </div>
     </div>
     `
+   
 
   });
 }
@@ -49,7 +54,9 @@ const showResponseMessage = (message = "Check your connection") => {
 document.addEventListener("DOMContentLoaded", () => {
   const buttonSearch = document.querySelector('#search-button');
   const buttonFilter = document.querySelector('#filter-button');
+  const buttonCloseFilter = document.getElementById('close-filter');
   const filterSide = document.getElementById("filter");
+  const resultSide = document.querySelector(".results");
 
   const cuisineCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=cuisine]')
   const intoleranceCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=dairy]')
@@ -69,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filterChecked.query = searchInput.toString();
       queries = constructQuery(filterChecked);
 
-      console.log(queries);
+      // console.log(queries);
       getRecipes(queries);
     } else {
       console.log("please write input");
@@ -79,20 +86,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   })
 
-  buttonFilter.addEventListener("click", () => {
-    if (filterSide.style.display === "none") { return filterSide.style.display = "block"; }
-    else { return filterSide.style.display = "none"; }
-  });
+  buttonFilter.addEventListener("click", openFilter);
+  buttonCloseFilter.addEventListener("click", closeFilter);
 
+  function openFilter(){
+    filterSide.style.width = "300px";
+    resultSide.style.marginLeft = "250px";
+  }
 
+  function closeFilter(){
+    filterSide.style.width = "0";
+    resultSide.style.marginLeft = "0";
+  }
+
+  function clearFilter(){
+    filterChecked = { query: "", diet: "", intolerances: "", cuisine: "" };
+    //make function to unchecked filter
+  }
 
   cuisineCheckBoxes.forEach(function (checkBox) {
     checkBox.addEventListener('change', function () {
       filterChecked.cuisine = checkedBoxestoArray(cuisineCheckBoxes).toString();
       queries = constructQuery(filterChecked);
+      // getRecipes(queries);
 
     });
-
   });
 
 
@@ -100,15 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
     checkBox.addEventListener('change', function () {
       filterChecked.intolerances = checkedBoxestoArray(intoleranceCheckBoxes).toString();
       queries = constructQuery(filterChecked);
-
+      // getRecipes(queries);
     });
-
   });
 
   dietCheckBoxes.forEach(function (checkBox) {
     checkBox.addEventListener('change', function () {
       filterChecked.diet = checkedBoxestoArray(dietCheckBoxes).toString();
       queries = constructQuery(filterChecked);
+      // getRecipes(queries);
 
     });
   });
@@ -120,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (filterObject[property] !== "") {
         if (property == "query") {
-          query = query.concat(`?${property}=${filterObject[property]}`);
+          query = query.concat(`${property}=${filterObject[property]}`);
         } else {
           query = query.concat(`&${property}=${filterObject[property]}`)
         }
@@ -128,5 +146,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     return query
   }
-
-});
+})
