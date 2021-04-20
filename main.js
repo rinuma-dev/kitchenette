@@ -30,13 +30,14 @@ const renderAllRecipes = (results) => {
   results.forEach(result => {
     
     listRecipes.innerHTML += `
-    <div class= "result">
+    <div class= "result box">
    
-    <div class ="recipe-title">
-    <h4>${result.title}</h4>
-    </div>
+
     <div class="recipe-img">
     <img id="img_ ${result.id}" src="${result.image}"><img>
+    </div>
+    <div class ="recipe-title">
+    <h4>${result.title}</h4>
     </div>
     </div>
     `
@@ -55,6 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttonSearch = document.querySelector('#search-button');
   const buttonFilter = document.querySelector('#filter-button');
   const buttonCloseFilter = document.getElementById('close-filter');
+  const buttonClearFilter = document.getElementById('clear-filter');
+  
   const filterSide = document.getElementById("filter");
   const resultSide = document.querySelector(".results");
 
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const intoleranceCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=dairy]')
   const dietCheckBoxes = document.querySelectorAll('input[type="radio"][name=diets]')
 
-  const filterChecked = { query: "", diet: "", intolerances: "", cuisine: "" };
+  let filterChecked = { query: "", diet: "", intolerances: "", cuisine: "" };
   let queries = "";
 
 
@@ -88,20 +91,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buttonFilter.addEventListener("click", openFilter);
   buttonCloseFilter.addEventListener("click", closeFilter);
+  buttonClearFilter.addEventListener("click", clearFilter);
 
   function openFilter(){
-    filterSide.style.width = "300px";
-    resultSide.style.marginLeft = "250px";
+    filterSide.style.width = "25vw";
+    resultSide.style.marginLeft = "25vw";
+    resultSide.style.width = "60vw";
   }
 
   function closeFilter(){
     filterSide.style.width = "0";
     resultSide.style.marginLeft = "0";
+    resultSide.style.width = "85vw";
   }
 
   function clearFilter(){
-    filterChecked = { query: "", diet: "", intolerances: "", cuisine: "" };
+    cuisineCheckBoxes.forEach((checkBox) => {
+        checkBox.checked = false;
+    });
+    dietCheckBoxes.forEach((checkBox) => {
+        checkBox.checked = false;
+    });
+    intoleranceCheckBoxes.forEach((checkBox) => {
+        checkBox.checked = false;
+    });
+
+    filterChecked ={diet: "", intolerances: "", cuisine: "" };
+    queries = constructQuery(filterChecked);
+
     //make function to unchecked filter
+
   }
 
   cuisineCheckBoxes.forEach(function (checkBox) {
