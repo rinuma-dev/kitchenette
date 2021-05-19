@@ -4,8 +4,6 @@ const BaseUrl = "https://api.spoonacular.com/recipes/complexSearch";
 const getRecipes = (queries) => {
   console.log(`${BaseUrl}?${queries}&apiKey=${APIkey}`);
   fetch(`${BaseUrl}?${queries}&apiKey=${APIkey}`)
-  
-
     .then(response => {
       return response.json();
     })
@@ -58,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttonCloseFilter = document.getElementById('close-filter');
   const buttonClearFilter = document.getElementById('clear-filter');
   
-  const filterSide = document.getElementById("filter");
+  const filterSide = document.querySelector(".filter");
   const resultSide = document.querySelector(".results");
 
   const cuisineCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=cuisine]')
@@ -94,15 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
   buttonClearFilter.addEventListener("click", clearFilter);
 
   function openFilter(){
-    filterSide.style.width = "25vw";
-    resultSide.style.marginLeft = "25vw";
-    resultSide.style.width = "60vw";
+    filterSide.classList.toggle('active');
   }
 
   function closeFilter(){
-    filterSide.style.width = "0";
-    resultSide.style.marginLeft = "0";
-    resultSide.style.width = "85vw";
+    filterSide.classList.remove('active');
   }
 
   function clearFilter(){

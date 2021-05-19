@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:wght@300&display=swap');
 
+
 body{
     /* display: flex; */
-    /* flex-direction: column; */
+    flex-direction: column;
 
     margin: 0;
     width: 100vw;
@@ -13,6 +14,17 @@ body{
     background-color: #ebebeb;
 
     font-family: 'Poppins', sans-serif;
+
+}
+button{
+     background-color: #f5f5f5;
+    border:none;
+  color:#707070;
+  font-size:15px;
+  padding: 10px 20px;
+  margin:5px;
+  border-radius:4px;
+  outline:none;
 }
 .box{
     box-shadow:
@@ -25,50 +37,130 @@ body{
 
 
 nav {
-    height: 10vh;
-    background-color: #FC5130;
-    color: #D6D6D6;
-    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    height:70px;
+    width: 100%;
+    position:fixed;
+    top: 0;
+
+    background-color: rgb(255, 255, 255);
     text-align: center;
+
+    box-shadow: 0px 3px 10px #b1afaf,
+    0px 2px 5px #b1afaf;
+}
+#logo{
+    margin: 10px;
+    text-align: auto;
+
+
+}
+.search-wrapper{
+    height: 100%;
+    display: inline-flex;
+
+    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+#search-bar{
+    display: inline-flex;
+    position: relative;
+    margin: 5px;
+    box-shadow: 2px 3px 7px rgb(184, 184, 184);
+    border-radius: 20px;
 }
 
+#search-input {
+ 
+    border-radius: 20px;
+    border:0;
+    width:100%;
+    height: 40px;
+    font-weight: bold;
+   
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+  }
+
+  #search-button{
+     background-color: rgb(243, 188, 35);
+     border:none;
+     color: cornsilk;
+     border-radius: 20px;
+     padding: 0px 20px 0px 20px;
+     margin: 3px 5px 3px 0px;
+
+  }
+  #filter-button{
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      background-color: cornflowerblue;
+  }
+#search-bar:hover{
+    box-shadow: 1px 2px 8px grey;
+}
+#search-button:hover{
+    background-color:rgb(221, 167, 19); 
+}
+#search-icon{
+    position: absolute;
+    left: 10px;
+    top: 12px;
+}
+  
+  /* #search-input, #search-input {
+    border: 1px solid #009688;
+    background-color: white;
+  } */
 
 .results{
     display: flex;
+    align-self: center;
+    margin: 50px 60px;
+    /* top: 50px; */
     flex-wrap:wrap;
-    width: 85vw;  
+    width: 80vw;  
     padding: 5vh;
     justify-content: space-evenly;
 
 }
 .result{
+ 
     background-color: rgb(255, 255, 255);
     width: 200px;
     border-radius: 10px;
-    /* border: 1px solid black; */
-    margin: 10px 10px 10px 10px;
-    padding:10px;
+    margin: 5px 5px 5px 5px;
+    padding:5px;
 }
 
 .recipe-title{
-   
     text-align: center;
-    border: 1px solid black;
-    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
 
 }
 .recipe-img{
-    width: 80%;
+  
+    width: 100%;
+    height: 45%;
+    background-color: rgb(233, 232, 232);
+
 }
 .result img{
-    width: 200px;
+    width: 100%;
     border-radius: 5px;
+    object-fit: cover;
 }
-#filter{
+.filter{
     background-color: rgb(230, 230, 230);
-    width: 25vw;
-    height: 100vh;
     position: fixed;
+    width: 0vw;
+    height: 100vh;
     z-index: 1;
     top: 0;
     left: 0;
@@ -76,19 +168,41 @@ nav {
     transition: 0.9s;
     padding-top: 5vh;
     color: rgb(37, 34, 34);
-    border-right: 1px solid  rgb(192, 192, 192);;
+    border-right: 1px solid  rgb(192, 192, 192);
+    text-align: center;
  
 }
+.filter.active{ 
+    width: 30vw;
+ 
+}
+#filter button{
+    background-color: #fb931b;
+    color: blanchedalmond;
+}
+.filter-title{
+    font-size: calc(7vh * 1/2);
+    margin: 2vw;
+    background-color:rgb(146, 145, 145); 
+}
 .filter-list {
-    background-color:rgb(240, 240, 240); ;
+    background-color:rgb(240, 240, 240); 
     display: flex; 
     font-size: 3vh; 
     flex-wrap: wrap;
-    flex-direction:row;
     justify-content:right;
-    margin: 5vh;
+    margin: 2vw;
     text-align: left;
-    border:1px solid black;
+    /* border:1px solid black; */
     
+}
+@media screen and (max-width: 800px) and (min-width: 600px){
+    .filter{
+        width:0vw;
+    }
+    .filter.active{
+        width: 100vw;
+    }
+
 }
 
