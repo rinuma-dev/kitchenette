@@ -33,10 +33,14 @@ const renderAllRecipes = (results) => {
 
     <div class="recipe-img">
     <img id="img_ ${result.id}" src="${result.image}"><img>
+    <i class="material-icons">favorite</i>
     </div>
+  
     <div class ="recipe-title">
     <h4>${result.title}</h4>
     </div>
+    
+    
     </div>
     `
    
@@ -52,9 +56,9 @@ const showResponseMessage = (message = "Check your connection") => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const buttonSearch = document.querySelector('#search-button');
-  const buttonFilter = document.querySelector('#filter-button');
-  const buttonCloseFilter = document.getElementById('close-filter');
-  const buttonClearFilter = document.getElementById('clear-filter');
+  const buttonFilter = document.querySelector('.filter-button');
+  const buttonCloseFilter = document.querySelector('.close-filter');
+  const buttonClearFilter = document.querySelector('.clear-filter');
   
   const filterSide = document.querySelector(".filter");
   const resultSide = document.querySelector(".results");
@@ -73,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buttonSearch.addEventListener("click", () => {
     const searchInput = document.getElementById("search-input").value;
+    console.log(searchInput);
     if (searchInput !== null || 'undefined') {
       filterChecked.query = searchInput.toString();
       queries = constructQuery(filterChecked);

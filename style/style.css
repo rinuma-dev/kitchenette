@@ -1,73 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:wght@300&display=swap');
-
-
-body{
+body {
     /* display: flex; */
     flex-direction: column;
-
     margin: 0;
     width: 100vw;
     height: 100vh;
-
     min-width: 60vw;
     min-height: 100vh;
     background-color: #ebebeb;
-
     font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
 
+button {
+    border: none;
+    height: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    outline: none;
+    background-color:cornflowerblue;
+    color: blanchedalmond;
 }
-button{
-     background-color: #f5f5f5;
-    border:none;
-  color:#707070;
-  font-size:15px;
-  padding: 10px 20px;
-  margin:5px;
-  border-radius:4px;
-  outline:none;
-}
-.box{
+
+.box {
     box-shadow:
-    0 22.1px 10.2px -39px rgba(0, 0, 0, 0.036),
-    0 37.9px 19.3px -39px rgba(0, 0, 0, 0.052),
-    0 48.6px 30.8px -39px rgba(0, 0, 0, 0.066),
-    0 59.4px 47.5px -39px rgba(0, 0, 0, 0.083),
-    0 105px 87px -39px rgba(0, 0, 0, 0.12)
-  ;}
+  0 5px 5.5px rgba(0, 0, 0, 0.03),
+  0 10.6px 8.7px rgba(0, 0, 0, 0.063),
+  0 22px 30px rgba(0, 0, 0, 0.1);
+  
+}
 
+.button-shadow {
+    box-shadow: 2px 3px 7px rgb(184, 184, 184);
+}
 
 nav {
     display: flex;
     justify-content: space-between;
-    height:70px;
+    height: 70px;
     width: 100%;
-    position:fixed;
+    position: fixed;
     top: 0;
-
     background-color: rgb(255, 255, 255);
     text-align: center;
-
-    box-shadow: 0px 3px 10px #b1afaf,
-    0px 2px 5px #b1afaf;
+    box-shadow: 0px 3px 10px #b1afaf, 0px 2px 5px #b1afaf;
+    z-index: 1;
+    
 }
-#logo{
-    margin: 10px;
-    text-align: auto;
 
-
+#logo img {
+    width: 2rem;
+    margin: 0.5rem;
 }
-.search-wrapper{
+
+.search-wrapper {
     height: 100%;
     display: inline-flex;
-
-    
     flex-direction: row;
     justify-content: center;
     align-items: center;
     position: relative;
-
 }
-#search-bar{
+
+#search-bar {
     display: inline-flex;
     position: relative;
     margin: 5px;
@@ -76,88 +72,114 @@ nav {
 }
 
 #search-input {
- 
     border-radius: 20px;
-    border:0;
-    width:100%;
+    border: 0;
+    width: 100%;
     height: 40px;
     font-weight: bold;
-   
     padding: 2px 23px 2px 30px;
     outline: 0;
-  }
+}
 
-  #search-button{
-     background-color: rgb(243, 188, 35);
-     border:none;
-     color: cornsilk;
-     border-radius: 20px;
-     padding: 0px 20px 0px 20px;
-     margin: 3px 5px 3px 0px;
+#search-button {
+    background-color: rgb(246, 126, 46);
+    border: none;
+    color: cornsilk;
+    border-radius: 20px;
+    height: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    margin: auto;
+    margin-right: 0.5em;
+}
 
-  }
-  #filter-button{
-      height: 40px;
-      border: none;
-      border-radius: 20px;
-      background-color: cornflowerblue;
-  }
-#search-bar:hover{
+.filter-button {
+    height: 1.5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 0 20px 0 30px;
+}
+.icon-light{
+    font-family: "Material Icons";
+    color: #f1f0ef;
+    position: absolute;
+    right: 2.5rem;
+}
+
+.icon-black{
+    font-family: "Material Icons";
+    color: #2b2a29;
+    position: absolute;
+    /* right: 2.5rem; */
+}
+
+
+
+#search-bar, .filter-button:hover {
     box-shadow: 1px 2px 8px grey;
 }
-#search-button:hover{
-    background-color:rgb(221, 167, 19); 
+
+#search-button:hover {
+    background-color: rgb(211, 84, 11);
 }
-#search-icon{
+
+#search-icon {
     position: absolute;
     left: 10px;
     top: 12px;
 }
-  
-  /* #search-input, #search-input {
-    border: 1px solid #009688;
-    background-color: white;
-  } */
 
-.results{
+
+.results {
     display: flex;
     align-self: center;
     margin: 50px 60px;
-    /* top: 50px; */
-    flex-wrap:wrap;
-    width: 80vw;  
+    flex-wrap: wrap;
+    width: 80vw;
     padding: 5vh;
     justify-content: space-evenly;
-
 }
-.result{
- 
+
+.result {
     background-color: rgb(255, 255, 255);
     width: 200px;
     border-radius: 10px;
-    margin: 5px 5px 5px 5px;
-    padding:5px;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    /* padding: 5px; */
 }
 
-.recipe-title{
+.recipe-title {
     text-align: center;
     background-color: rgb(255, 255, 255);
-
 }
-.recipe-img{
-  
+
+.recipe-img {
     width: 100%;
     height: 45%;
     background-color: rgb(233, 232, 232);
-
+    position: relative;
 }
-.result img{
+.recipe-img i{
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.3rem;
+    color: rgb(214, 190, 177);
+}
+.recipe-img i:hover{
+    color: rgb(211, 84, 11);
+}
+.result img {
     width: 100%;
     border-radius: 5px;
     object-fit: cover;
 }
-.filter{
-    background-color: rgb(230, 230, 230);
+
+.filter {
+    background-color: #ebebeb;
     position: fixed;
     width: 0vw;
     height: 100vh;
@@ -168,41 +190,75 @@ nav {
     transition: 0.9s;
     padding-top: 5vh;
     color: rgb(37, 34, 34);
-    border-right: 1px solid  rgb(192, 192, 192);
+    border-right: 1px solid rgb(192, 192, 192);
     text-align: center;
- 
 }
-.filter.active{ 
-    width: 30vw;
- 
+
+.filter.active {
+    width: 25vw;
 }
-#filter button{
+
+.close-filter{
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
+.close-filter:hover{
+    background-color: black;
+    color: blanchedalmond;
+    margin: auto;
+}
+
+.clear-filter{
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.clear-filter i{
+    position: absolute;
+    left: 1.5rem;
+    color: blanchedalmond;
+  
+}
+.clear-filter-btn{
+    padding-left:2rem;
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+#filter button {
     background-color: #fb931b;
     color: blanchedalmond;
 }
-.filter-title{
-    font-size: calc(7vh * 1/2);
-    margin: 2vw;
-    background-color:rgb(146, 145, 145); 
-}
-.filter-list {
-    background-color:rgb(240, 240, 240); 
-    display: flex; 
-    font-size: 3vh; 
-    flex-wrap: wrap;
-    justify-content:right;
-    margin: 2vw;
+
+.filter-title {
     text-align: left;
-    /* border:1px solid black; */
-    
+    padding-left: 1rem;
+    font-size: 1rem;
+    margin: 1rem;
+    border-bottom: 1px solid #a8a8a8;
 }
-@media screen and (max-width: 800px) and (min-width: 600px){
-    .filter{
-        width:0vw;
+
+.filter-list {
+    font-size: 0.75rem;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    text-align:start;
+  
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .filter {
+        width: 0vw;
     }
-    .filter.active{
+    .filter.active {
         width: 100vw;
     }
-
 }
-
