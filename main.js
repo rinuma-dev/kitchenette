@@ -28,22 +28,21 @@ const renderAllRecipes = (results) => {
   results.forEach(result => {
     
     listRecipes.innerHTML += `
-    <div class= "result box">
+    <div class= "result__item box">
    
 
-    <div class="recipe-img">
+    <div class="result__cover">
     <img id="img_ ${result.id}" src="${result.image}"><img>
-    <i class="material-icons">favorite</i>
+    <i class="result__bookmark material-icons icon--light">favorite</i>
     </div>
   
-    <div class ="recipe-title">
+    <div class ="result__title">
     <h4>${result.title}</h4>
     </div>
     
     
     </div>
     `
-   
 
   });
 }
@@ -55,17 +54,18 @@ const showResponseMessage = (message = "Check your connection") => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const buttonSearch = document.querySelector('#search-button');
-  const buttonFilter = document.querySelector('.filter-button');
-  const buttonCloseFilter = document.querySelector('.close-filter');
-  const buttonClearFilter = document.querySelector('.clear-filter');
-  
-  const filterSide = document.querySelector(".filter");
-  const resultSide = document.querySelector(".results");
+  const buttonSearch = document.querySelector('.search__button');
+
+  const buttonFilter = document.querySelector('.filter__button');
+  const buttonCloseFilter = document.querySelector('.filter__close');
+  const buttonClearFilter = document.querySelector('.filter__clear');
+  const filterSide = document.querySelector('.filter__inputs');
 
   const cuisineCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=cuisine]')
   const intoleranceCheckBoxes = document.querySelectorAll('input[type="checkbox"][name=dairy]')
   const dietCheckBoxes = document.querySelectorAll('input[type="radio"][name=diets]')
+
+  const resultSide = document.querySelector(".results");
 
   let filterChecked = { query: "", diet: "", intolerances: "", cuisine: "" };
   let queries = "";
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   buttonSearch.addEventListener("click", () => {
-    const searchInput = document.getElementById("search-input").value;
+    const searchInput = document.querySelector(".search__input").value;
     console.log(searchInput);
     if (searchInput !== null || 'undefined') {
       filterChecked.query = searchInput.toString();

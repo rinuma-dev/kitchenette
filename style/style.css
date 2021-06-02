@@ -1,28 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:wght@300&display=swap');
 body {
-    /* display: flex; */
     flex-direction: column;
     margin: 0;
     width: 100vw;
     height: 100vh;
-    min-width: 60vw;
-    min-height: 100vh;
     background-color: #ebebeb;
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
 }
 
-button {
-    border: none;
-    height: 1.5rem;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    border-radius: 1rem;
-    outline: none;
-    background-color:cornflowerblue;
-    color: blanchedalmond;
-}
-
+/* blocks */
 .box {
     box-shadow:
   0 5px 5.5px rgba(0, 0, 0, 0.03),
@@ -30,11 +17,46 @@ button {
   0 22px 30px rgba(0, 0, 0, 0.1);
   
 }
+.btn{
+    border: none;
+    height: 1.5rem;
+    margin: auto;
+    outline: none;
+    text-align: center;
+    padding: 0 20px 0 30px;
+    border-radius: 1rem;
+    background-color: rgb(100, 149, 237);
+    color: white;
 
-.button-shadow {
+}
+/* style modifiers */
+.btn--orange{
+    background-color: rgb(246, 126, 46);
+    color: cornsilk;
+}
+.btn--shadow {
     box-shadow: 2px 3px 7px rgb(184, 184, 184);
 }
+.icon--light{
+    font-family: "Material Icons";
+    color: #f1f0ef;
+}
+.icon--black{
+    font-family: "Material Icons";
+    color: #2b2a29;
+}
+.icon--btn{
+    position: absolute;
+    left: 0.3rem;
+}
 
+.center{
+    text-align: center;
+    margin: auto;
+    text-justify: auto;
+}
+
+/* Elements */
 nav {
     display: flex;
     justify-content: space-between;
@@ -49,12 +71,12 @@ nav {
     
 }
 
-#logo img {
+.nav__logo img{
     width: 2rem;
     margin: 0.5rem;
 }
 
-.search-wrapper {
+.nav__filtersearch {
     height: 100%;
     display: inline-flex;
     flex-direction: row;
@@ -63,15 +85,19 @@ nav {
     position: relative;
 }
 
-#search-bar {
+.search__container {
     display: inline-flex;
     position: relative;
     margin: 5px;
     box-shadow: 2px 3px 7px rgb(184, 184, 184);
     border-radius: 20px;
 }
-
-#search-input {
+.search__icon{
+    position: absolute;
+    left:0.3rem;
+    top: 0.4rem;
+}
+.search__input {
     border-radius: 20px;
     border: 0;
     width: 100%;
@@ -81,104 +107,32 @@ nav {
     outline: 0;
 }
 
-#search-button {
-    background-color: rgb(246, 126, 46);
-    border: none;
-    color: cornsilk;
+.search__button {
     border-radius: 20px;
     height: 1.5rem;
     padding: 0px 20px 0px 20px;
-    margin: auto;
     margin-right: 0.5em;
 }
-
-.filter-button {
-    height: 1.5rem;
-    border: none;
-    border-radius: 20px;
-    background-color: cornflowerblue;
-    color: white;
-    padding: 0 20px 0 30px;
-}
-.icon-light{
-    font-family: "Material Icons";
-    color: #f1f0ef;
-    position: absolute;
-    right: 2.5rem;
+.filter__container{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
 }
 
-.icon-black{
-    font-family: "Material Icons";
-    color: #2b2a29;
-    position: absolute;
-    /* right: 2.5rem; */
-}
-
-
-
-#search-bar, .filter-button:hover {
+.search__container, .filter__button:hover {
     box-shadow: 1px 2px 8px grey;
 }
 
-#search-button:hover {
+.search__button:hover {
     background-color: rgb(211, 84, 11);
 }
-
-#search-icon {
-    position: absolute;
-    left: 10px;
-    top: 12px;
+.filter__button, .clearfilter__btn:hover{
+    background-color: rgb(66, 117, 212);
 }
 
 
-.results {
-    display: flex;
-    align-self: center;
-    margin: 50px 60px;
-    flex-wrap: wrap;
-    width: 80vw;
-    padding: 5vh;
-    justify-content: space-evenly;
-}
-
-.result {
-    background-color: rgb(255, 255, 255);
-    width: 200px;
-    border-radius: 10px;
-    margin: 1rem 0.5rem 1rem 0.5rem;
-    /* padding: 5px; */
-}
-
-.recipe-title {
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-}
-
-.recipe-img {
-    width: 100%;
-    height: 45%;
-    background-color: rgb(233, 232, 232);
-    position: relative;
-}
-.recipe-img i{
-
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    position: absolute;
-    right: 0.3rem;
-    bottom: 0.3rem;
-    color: rgb(214, 190, 177);
-}
-.recipe-img i:hover{
-    color: rgb(211, 84, 11);
-}
-.result img {
-    width: 100%;
-    border-radius: 5px;
-    object-fit: cover;
-}
-
-.filter {
+.filter__inputs {
     background-color: #ebebeb;
     position: fixed;
     width: 0vw;
@@ -194,47 +148,29 @@ nav {
     text-align: center;
 }
 
-.filter.active {
+.filter__inputs.active {
     width: 25vw;
 }
 
-.close-filter{
+.filter__close{
     position: absolute;
     top:5px;
     right: 5px;
 }
-.close-filter:hover{
+.filter__close:hover{
     background-color: black;
     color: blanchedalmond;
     margin: auto;
 }
 
-.clear-filter{
+.filter__clear{
     display: inline-flex;
     position: relative;
     flex-direction: column;
     justify-content: center;
 }
 
-.clear-filter i{
-    position: absolute;
-    left: 1.5rem;
-    color: blanchedalmond;
-  
-}
-.clear-filter-btn{
-    padding-left:2rem;
-    width: auto;
-    height: auto;
-    text-align: center;
-}
-
-#filter button {
-    background-color: #fb931b;
-    color: blanchedalmond;
-}
-
-.filter-title {
+.filter__title {
     text-align: left;
     padding-left: 1rem;
     font-size: 1rem;
@@ -242,7 +178,7 @@ nav {
     border-bottom: 1px solid #a8a8a8;
 }
 
-.filter-list {
+.filter__list {
     font-size: 0.75rem;
     background-color: rgb(240, 240, 240);
     display: flex;
@@ -252,13 +188,64 @@ nav {
   
 }
 
+.results {
+    display: flex;
+    align-self: center;
+    margin: 50px 60px;
+    flex-wrap: wrap;
+    width: 80vw;
+    padding: 5vh;
+    justify-content: space-evenly;
+}
+
+.result__item {
+    background-color: rgb(255, 255, 255);
+    width: 150px;
+    border-radius: 10px;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    padding: 5px;
+}
+
+.result__title {
+    font-size: 0.75rem;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.result__cover {
+    width: 100%;
+    background-color: rgb(233, 232, 232);
+    position: relative;
+}
+
+.result__cover img {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.result__bookmark{
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.3rem;
+    color: rgb(214, 190, 177);
+}
+.result__bookmark:hover{
+    color: rgb(211, 84, 11);
+}
 
 
 @media screen and (max-width: 800px) {
     .filter {
         width: 0vw;
     }
-    .filter.active {
+    .filter__inputs.active {
         width: 100vw;
+    }
+    .search-input{
+        width: 80%;
     }
 }
